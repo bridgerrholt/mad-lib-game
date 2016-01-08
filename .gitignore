@@ -1,5 +1,5 @@
 .DS_Store
 sftp-config.json
-.o
-.exe
+*.o
+*.exe
 mad_lib_game
