@@ -10,6 +10,7 @@ class ColorCodes
 public:
 	ColorCodes();
 
+	// A set of colors for different kinds of codes.
 	class ColorSet
 	{
 	public:
@@ -25,6 +26,7 @@ public:
 
 	std::string reset;
 	std::string bold;
+	std::string underline;
 
 	ColorSet regularSet;
 	ColorSet boldSet;
