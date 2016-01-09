@@ -10,25 +10,26 @@ class ColorCodes
 public:
 	ColorCodes();
 
+	class ColorSet
+	{
+	public:
+		std::string black;
+		std::string red;
+		std::string green;
+		std::string yellow;
+		std::string blue;
+		std::string purple;
+		std::string cyan;
+		std::string white;
+	};
+
 	std::string reset;
+	std::string bold;
 
-	std::string black;
-	std::string red;
-	std::string green;
-	std::string yellow;
-	std::string blue;
-	std::string magneta;
-	std::string cyan;
-	std::string white;
-
-	std::string boldBlack;
-	std::string boldRed;
-	std::string boldGreen;
-	std::string boldYellow;
-	std::string boldBlue;
-	std::string boldMagenta;
-	std::string boldCyan;
-	std::string boldWhite;
+	ColorSet regularSet;
+	ColorSet boldSet;
+	ColorSet underlineSet;
+	ColorSet backgroundSet;
 };
 
 #endif

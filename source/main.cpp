@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include <string>
 #include <vector>
@@ -23,7 +24,7 @@ int main(int argc, char* argv[])
 		std::chrono::system_clock::now().time_since_epoch();
 	auto currentMilliseconds = std::chrono::duration_cast<
 		std::chrono::milliseconds>(currentDuration).count();
-	std::srand(currentMilliseconds);
+	srand(currentMilliseconds);
 
 	// Make the FileSelector linking to "stories".
 	FileSelector fileSelector("stories/");

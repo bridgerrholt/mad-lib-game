@@ -84,7 +84,7 @@ void Manager::run()
 	std::cout << "\n";
 	for (std::size_t i = 0; i < storyTexts_.size()-1; ++i) {
 		std::cout << storyTexts_[i] <<
-			constants::G_COLOR_CODES.boldBlack << inputObjects_[i].content <<
+			constants::G_COLOR_CODES.bold << inputObjects_[i].content <<
 			constants::G_COLOR_CODES.reset;
 	}
 	std::cout << storyTexts_[storyTexts_.size()-1] << '\n';
