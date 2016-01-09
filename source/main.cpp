@@ -52,18 +52,37 @@ int main(int argc, char* argv[])
 		// Ask the questions and print the story.
 		manager.run();
 
-		// Break if user is done playing.
+
+		// Check if the user wants to keep playing.
 		std::cout << "Play [A]nother, the [S]ame, or [Q]uit? ";
 		std::string questionInput = getLowered(getStrippedInput());
+
+		// If they want the same story, don't change the file.
 		if (questionInput == "s" || questionInput == "same") {
 
 		}
+
+		// If they want to quit, break out of the loop.
 		else if (questionInput == "q" || questionInput == "quit") {
 			break;
 		}
+
+		// If they entered invalid text, assume they want another story.
 		else {
+			// If they did not enter the appropriate text, alert them.
+			if (questionInput != "a" && questionInput != "another") {
+				std::cout << "Playing another...\n";
+			}
+
+			// Tell them when they've completed a cycle.
+			if (fileSelector.getRemainingIndexesSize() == 0) {
+				std::cout << "Note: you have played them all.\n";
+			}
+
 			nextFileName = fileSelector.getRandomFileName();
 		}
+
+		// Clear the buffer.
 		std::cout << std::endl;
 	}
 

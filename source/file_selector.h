@@ -22,6 +22,10 @@ public:
 	// Sets.
 	void setPath(const std::string& path) { path_ = path; }
 
+	// Gets.
+	std::size_t getRemainingIndexesSize()
+		const { return remainingIndexes_.size(); }
+
 private:
 	// Concatenated to the beginning of all future file name strings.
 	std::string path_;
