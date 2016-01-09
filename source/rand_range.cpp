@@ -1,5 +1,3 @@
-#include "rand_range.h"
-
 #include <cstdlib>
 #include <iostream>
 

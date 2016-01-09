@@ -1,16 +1,31 @@
+#include <iostream>
+#include <stdlib.h>
+
+#include <string>
+#include <vector>
+
+#include <chrono>
+
+
 #include "get_lowered.h"
-#include "get_stripped_input.h"
 #include "rand_range.h"
+
+#include "get_stripped_input.h"
 
 #include "file_selector.h"
 #include "manager.h"
 
-#include <iostream>
-#include <string>
-#include <vector>
 
 int main(int argc, char* argv[])
 {
+	// Seed the RNG with the current time.
+	auto currentDuration =
+		std::chrono::system_clock::now().time_since_epoch();
+	auto currentMilliseconds = std::chrono::duration_cast<
+		std::chrono::milliseconds>(currentDuration).count();
+	std::srand(currentMilliseconds);
+
+	// Make the FileSelector linking to "stories".
 	FileSelector fileSelector("stories/");
 
 	// If there are inputs, set them to be the input story text files.
@@ -25,12 +40,13 @@ int main(int argc, char* argv[])
 		fileSelector.pushFileName("story_001.txt");
 	}
 
-	std::string nextFile = fileSelector.getRandomFileName();
+	// File name of the next story to be used.
+	std::string nextFileName = fileSelector.getRandomFileName();
 
 	// The main game loop, breaks upon request.
 	while (true) {
 		// Load a file again every loop.
-		Manager manager(nextFile);
+		Manager manager(nextFileName);
 
 		// Ask the questions and print the story.
 		manager.run();
@@ -45,7 +61,7 @@ int main(int argc, char* argv[])
 			break;
 		}
 		else {
-			nextFile = fileSelector.getRandomFileName();
+			nextFileName = fileSelector.getRandomFileName();
 		}
 		std::cout << std::endl;
 	}

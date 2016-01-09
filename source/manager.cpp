@@ -1,6 +1,7 @@
 #include "manager.h"
 #include "get_stripped_input.h"
-#include "color_codes.h"
+
+#include "constants.h"
 
 #include <exception>
 
@@ -30,6 +31,7 @@ Manager::Manager(std::string fileName)
 		// Loop through the entire file.
 		char i;
 		while (true) {
+			// Advance.
 			file.get(i);
 
 			// Break if it's past the last character.
@@ -82,7 +84,8 @@ void Manager::run()
 	std::cout << "\n";
 	for (std::size_t i = 0; i < storyTexts_.size()-1; ++i) {
 		std::cout << storyTexts_[i] <<
-			G_COLOR_CODES.red << inputObjects_[i].content << G_COLOR_CODES.reset;
+			constants::G_COLOR_CODES.boldBlack << inputObjects_[i].content <<
+			constants::G_COLOR_CODES.reset;
 	}
 	std::cout << storyTexts_[storyTexts_.size()-1] << '\n';
 	std::cout << std::endl;
